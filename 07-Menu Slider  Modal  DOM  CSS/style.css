@@ -1,0 +1,156 @@
+:root {
+  --model-duration: 1s;
+  --primary-color: #30336b;
+  --secondary-color: #be2edd;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+}
+body.show-nav {
+  transform: translate(200px);
+}
+nav {
+  background-color: var(--primary-color);
+  border-right: 2px solid rgba(200, 200, 200, 0.1);
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100vh;
+  z-index: 100;
+  transform: translateX(-100%);
+}
+nav .logo {
+  margin: 30px 0;
+  text-align: center;
+}
+nav  .logo img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+nav ul {
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
+}
+nav ul li {
+  border-bottom: 2px solid rgba(200, 200, 200, 0.1);
+  padding: 20px;
+}
+nav ul li:first-of-type {
+  border-top: 2px solid rgba(200, 200, 200, 0.1);
+}
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: bold;
+}
+nav ul li a:hover {
+  text-decoration: underline;
+}
+header {
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 130%;
+  padding: 20px 40px;
+  text-align: center;
+  position: relative;
+}
+header h1 {
+  display: block;
+}
+#toggle {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 8px;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+}
+button, input[type="submit"] {
+  background-color: #be2edd;
+  border: 0;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+.s-btn {
+  padding: 12px 30px;
+  color: #fff;
+}
+.container {
+  padding: 15px;
+  margin: 0 auto;
+  max-width: 100%;
+  width: 800px;
+}
+.model-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+}
+.model-container.show-model {
+  display: block;
+}
+.model {
+  background-color: #fff;
+  border: 0;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  max-width: 100%;
+  width: 400px;
+}
+.model-header {
+  background-color: var(--primary-color);
+  padding: 15px;
+  color: #fff;
+  position: relative;
+}
+.model-header h3 {
+  border-bottom: 1px solid #333;
+  margin: 0;
+}
+
+.model-content {
+  padding: 20px;
+}
+.model-form div {
+  margin: 20px 0;
+}
+.model-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+.model-form input {
+  padding: 8px;
+  width: 100%;
+}
+.close-btn {
+  background: transparent;
+  font-size: 20px;
+  top: 0;
+  right: 0;
+  position: absolute;
+  color: #fff;
+}
+.submit-btn {
+  color: #fff;
+  font-size: 22px;
+}

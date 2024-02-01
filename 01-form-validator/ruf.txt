@@ -1,0 +1,67 @@
+
+// Show input error message
+function showError(input, message) {
+  const formControl = input.parentElement;
+  formControl.className = 'form-control error';
+  const small = formControl.querySelector('small');
+  small.innerText = message
+};
+// show Success Outline
+function showSuccess(input) {
+  const formControl = input.parentElement;
+  formControl.className = 'form-control success';
+}
+// Check Required feilds
+function checkRequired(inputArr) {
+  inputArr.forEach(
+    function (input) {
+      if (input.value.trim() === '') {
+        showError(input, `${getId(input)} is required`)
+      }else {
+        showSuccess(input);
+      }
+    }
+  )
+};
+// chech input length
+function checkLenght(input, min, max) {
+   if (input.value.length < min) {
+     showError(
+       input,
+       `${getId(input)} is must be minimum ${min} characters`);
+   }else if (input.value.length > max)
+    {
+     showError(input, `${getId(input)} is must be less then ${max} characters`);
+   }else {
+     showSuccess(input);
+   }
+}
+// check passwords match
+function checkPasswordMatch(input1, input2) {
+  if(input1.value !== input2.value) {
+    showError(input2, 'Passwords do not match')
+  }
+}
+//get id
+function getId(input){
+  return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+}
+// check is email valid
+function checkEmailvalid(input) {
+  const re = (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(input.value));
+  if(re){
+    showSuccess(input)
+  }else {
+    showError(input, 'Email is not valid')
+  }
+};
+
+// Event listeners
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  checkRequired([username, email, password, password2]);
+  checkLenght(username, 3, 15);
+  checkLenght(password, 6, 15);
+  checkPasswordMatch(password, password2)
+  checkEmailvalid(email);
+});
