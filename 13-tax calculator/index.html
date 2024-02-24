@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Tax Calculate</title>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+          <h1>Salary Tax Calculator</h1>
+          <p>
+            Apart from compliance, signing up with our online tax return portal
+            allows you to access an easy to use tax return calculator that lays
+            out all figures for you, in a comprehensible manner. Our salary tax
+            calculator is constantly updated with the latest regulations and tax
+            rates in Pakistan.
+          </p>
+        </div>
+        <div class="right">
+          <form action="#" class="from" id="form">
+            <select id="year">
+              <option value="2024">2024</option>
+              <option value="2023">2023</option>
+              <option value="2022">2022</option>
+              <option value="2021">2021</option>
+              <option value="2020">2020</option>
+              <option value="2019">2019</option>
+              <option value="2018">2018</option>
+            </select>
+            <input
+              type="number"
+              placeholder="Enter your monthly salary"
+              id="salaryInput"
+            />
+            <button id="calculate">Calculate</button>
+          </form action="#">
+          <table rules="all" id="resultTable">
+            <tbody>
+              <tr>
+                <td>Monthly Salary <span id="salary">0</span></td>
+                <td>Monthly Tax  <span id="tax">0</span></td>
+                <td>Salary After Tax  <span id="afterTax">0</span></td>
+              </tr>
+              <tr>
+                <td>Yearly Salary  <span id="ySalary">0</span></td>
+                <td>Yearly Tax  <span id="yTax">0</span></td>
+                <td>Salary After Tax  <span id="yAfterTax">0</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+</body>
+<script src="./script.js"></script>
+</html>
