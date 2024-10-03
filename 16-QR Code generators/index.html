@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Code Generator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #2f2f2f;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+      h2 {
+        font-size: 2rem;
+        font-weight: 600;
+      }
+      .search {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 60%;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+      }
+      .search input {
+        border: none;
+        outline: none;
+        width: 70%;
+        font-size: 1.2rem;
+        font-weight: 600;
+        background-color: transparent;
+        color: #ffffff;
+      }
+      .search input:focus {
+        background-color: #2f2f2f;
+      }
+      .search button {
+        width: 30%;
+        border: none;
+        outline: none;
+        background-color: #05d089;
+        color: #2f2f2f;
+        font-size: 1.2rem;
+        font-weight: 600;
+        padding: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      #qr-code {
+        margin-top: 20px;
+        background-color: #ccc;
+        padding: 1rem;
+        border-radius: 1rem;
+        display: none;
+      }
+      #back {
+        margin-top: 20px;
+        background-color: #05d089;
+        color: #2f2f2f;
+        font-size: 1.2rem;
+        font-weight: 600;
+        padding: 10px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        border: 0;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>QR Code Generator</h2>
+    <div class="search" id="search_bar">
+      <input
+        type="text"
+        id="qr-input"
+        placeholder="Enter text or URL"
+        autocomplete="off"
+      />
+      <button onclick="generateQRCode()">Generate QR Code</button>
+    </div>
+
+    <div id="qr-code"></div>
+    <button onclick="goBack()" id="back">Back to Home</button>
+    <!-- Include the QRCode.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <script>
+      function generateQRCode() {
+        const qrText = document.getElementById("qr-input").value;
+        const qrCodeContainer = document.getElementById("qr-code");
+        const searchBar = document.getElementById("search_bar");
+        const backButton = document.getElementById("back");
+        qrCodeContainer.innerHTML = "";
+
+        new QRCode(qrCodeContainer, {
+          text: qrText,
+          width: 200,
+          height: 200,
+          colorDark: "#000000",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.H,
+        });
+        searchBar.style.display = "none";
+        qrCodeContainer.style.display = "block";
+        backButton.style.display = "block";
+
+        function goBack() {
+          searchBar.style.display = "flex";
+          qrCodeContainer.style.display = "none";
+          backButton.style.display = "none";
+          document.getElementById("qr-input").value = "";
+        }
+        backButton.addEventListener("click", goBack);
+      }
+    </script>
+  </body>
+</html>
